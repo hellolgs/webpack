@@ -1,0 +1,13 @@
+.bc-text {
+    .button {
+        display: flex;
+        >Left {
+            width: 300px;
+        }
+        >Table {
+            flex: 1;
+            margin-top: 20px;
+        }
+    }
+
+}
