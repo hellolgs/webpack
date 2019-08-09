@@ -4,7 +4,6 @@ const deve = require('./webpack.dev.js')
 const produ = require('./webpack.p.js')
 const moduledata = require('./webpack.mode')
 let submitdata = {
-    mode: 'development',
     entry: {
         app: './src/index.js',
     },

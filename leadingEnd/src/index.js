@@ -6,7 +6,7 @@ import *as Server from './api/index.js';
 Vue.prototype.$axios = Server;
 let env = process.env.NODE_ENV;
 if(env === 'development') {
-    require('../mock/index.js') 
+    // require('../mock/index.js') 
 }
 // Vue.use(ElementUI)
 new Vue({

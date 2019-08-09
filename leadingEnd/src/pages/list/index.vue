@@ -21,6 +21,15 @@ export default {
     Left,
     Table
   },
+  created() {
+    this.$axios.post("/loging/sess", {}).then(res => {
+      if (!res.username) {
+        if (this.$router.history.current.path !== "/loging") {
+          this.$router.push("/loging");
+        }
+      }
+    });
+  }
 };
 </script>
 

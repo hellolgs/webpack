@@ -1,6 +1,11 @@
 const Router = require('koa-router');
 const router = new Router();
 const { search, write, deletedata, alter, readingData, readingDataClass } = require('../../sql/sql')
+router.get('/remove', async (ctx, next) => {
+    ctx.session = null;
+    ctx.redirect('/dist/index.html')
+    next();
+})
 router.post('/', async (ctx, next) => {
     const data = ctx.request.body;
     const readResults = await search(data);
@@ -9,6 +14,10 @@ router.post('/', async (ctx, next) => {
             status: 200,
             data: readResults
         }
+        console.log(readResults[0]);
+        ctx.session.userdata = {
+            username: readResults[0].username,
+        };
         ctx.body = obj;
 
     } else {
@@ -18,12 +27,33 @@ router.post('/', async (ctx, next) => {
     }
     next();
 })
+router.post('/sess', async (ctx, next) => {
+    const username = ctx.session;
+    console.log(username)
+    if (username.userdata) {
+        const obj = {
+            username:username.userdata.username
+        }
+        ctx.body = obj;
+    } else {
+        const obj = {
+            username: 0
+        }
+        ctx.body = obj;
+    }
+    // const obj = {
+    //     username: 0
+    // }
+    // ctx.body = obj;
+    next();
+})
+
 router.post('/datapath', async (ctx, next) => {
     const arr = ctx.request.body;
     const obj = {
-        status:200,
-        data:{
-            list:arr,
+        status: 200,
+        data: {
+            list: arr,
         }
     }
     const readResults = await readingData();

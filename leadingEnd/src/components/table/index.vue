@@ -91,9 +91,9 @@ export default {
     };
   },
   created() {
-    this.$axios.post("http://127.0.0.1:4000/list")
+    this.$axios.post("/list")
       .then(res => {
-        this.dataArr = res.data.data.list;
+        this.dataArr = res.data.list;
         this.dataArr.forEach(item => {
           this.tableData.push(item);
         });
@@ -113,9 +113,10 @@ export default {
       let obj = {
         id: row.id
       };
-      this.$axios.post("http://127.0.0.1:4000/loging/delet", obj);
-      this.$axios.post("http://127.0.0.1:4000/list")
+      this.$axios.post("/loging/delet", obj);
+      this.$axios.post("/list")
         .then(res => {
+
           this.tableData = [];
           this.dataArr = res.data.data.list;
           this.dataArr.forEach(item => {

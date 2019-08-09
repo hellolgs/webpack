@@ -11,8 +11,8 @@ module.exports = {
         new Vueloader(),
     ],
     devServer: {
-        host: 'localhost',
-        port: 8080,
+        host: 'http://127.0.0.1',
+        port: 4000,
         open: true,
         hot: true
     }

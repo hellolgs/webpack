@@ -30,9 +30,11 @@ export default {
         username: refdata.username.value,
         password: refdata.password.value
       };
-      this.$axios.post("http://127.0.0.1:4000/loging", data).then(res => {
+      this.$axios.post("/loging", data).then(res => {
           if(res.data) {
               this.$router.push('/list')
+          } else {
+            alert('账号或密码错误，请重新输入')
           }
       })
     }

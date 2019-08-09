@@ -1,8 +1,10 @@
 import Axios from 'axios';
 import qs from 'qs';
-Axios.defaults.timeout = 10000;
+
 let env = process.env.NODE_ENV;
 if(env === 'production') {
+    Axios.defaults.timeout = 10000;
+    Axios.defaults.baseURL='http://39.97.109.77'
     Axios.interceptors.response.use(
         response => {
             if(response.status === 200) {

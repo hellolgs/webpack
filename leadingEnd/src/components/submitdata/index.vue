@@ -44,8 +44,8 @@ export default {
     let obj = {
       id: this.$route.query
     };
-    this.$axios.post("http://127.0.0.1:4000/loging/updeta", obj).then(res => {
-      this.form = res.data;
+    this.$axios.post("/loging/updeta", obj).then(res => {
+      this.form = res;
     });
   },
   methods: {
@@ -59,7 +59,7 @@ export default {
           status: this.form.status
         });
         this.$axios.post(
-          "http://127.0.0.1:4000/loging/write",
+          "/loging/write",
           this.dataArr
         );
         this.dataArr = [];
@@ -74,7 +74,7 @@ export default {
           status: this.form.status
         });
         this.$axios.post(
-          "http://127.0.0.1:4000/loging/amend",
+          "/loging/amend",
           this.dataArr
         );
         this.dataArr = [];
