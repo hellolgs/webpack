@@ -45,7 +45,7 @@ export default {
       id: this.$route.query
     };
     this.$axios.post("http://127.0.0.1:4000/loging/updeta", obj).then(res => {
-      this.form = res;
+      this.form = res.data;
     });
   },
   methods: {

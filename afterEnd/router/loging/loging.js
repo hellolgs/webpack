@@ -19,9 +19,15 @@ router.post('/', async (ctx, next) => {
     next();
 })
 router.post('/datapath', async (ctx, next) => {
-    const data = ctx.request.body;
+    const arr = ctx.request.body;
+    const obj = {
+        status:200,
+        data:{
+            list:arr,
+        }
+    }
     const readResults = await readingData();
-    ctx.body = readResults;
+    ctx.body = obj;
     next();
 })
 router.post('/write', async (ctx, next) => {
